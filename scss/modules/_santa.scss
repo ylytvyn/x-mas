@@ -17,9 +17,16 @@
             animation: wiggle .6s infinite;
         }
 
-        .hat__main::after {
-            animation: pompon .2s .5s 3;
+        .hat__main {
+            &::after {
+                animation: pompon .2s .5s 3;
+            }
+
+            &::before {
+                animation: hat .2s .5s 3;
+            }
         }
+        
     }
 
     &__beard {
@@ -64,7 +71,7 @@
 .eyes {
     &::before,
     &::after {
-        @include size(15%);
+        @include size(13%);
         @include pos($t: 20%);
         content: '';
         background-color: #000;
@@ -153,5 +160,17 @@
     75% {
         right: -32%;
         bottom: -41%;
+    }
+}
+
+@keyframes hat {
+    25% {
+        transform: skew(0, 41deg);
+        right: -16%;
+    }
+
+    75% {
+        transform: skew(0, 26deg);
+        right: -17%;
     }
 }

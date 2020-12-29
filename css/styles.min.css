@@ -96,6 +96,8 @@ body {
   -webkit-box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.2);
           box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .santa {
@@ -122,6 +124,11 @@ body {
 .santa:hover .hat__main::after {
   -webkit-animation: pompon .2s .5s 3;
           animation: pompon .2s .5s 3;
+}
+
+.santa:hover .hat__main::before {
+  -webkit-animation: hat .2s .5s 3;
+          animation: hat .2s .5s 3;
 }
 
 .santa__beard {
@@ -172,8 +179,8 @@ body {
 }
 
 .eyes::before, .eyes::after {
-  width: 15%;
-  height: 15%;
+  width: 13%;
+  height: 13%;
   position: absolute;
   top: 20%;
   content: '';
@@ -201,7 +208,7 @@ body {
 .hat__main {
   width: 100%;
   height: 100%;
-  background-color: #d00000;
+  background-color: #de2f32;
   border-radius: 100% 100% 0 0;
   -webkit-transform: skew(0, -8deg);
           transform: skew(0, -8deg);
@@ -216,7 +223,7 @@ body {
   right: -17%;
   content: '';
   border-width: 30px 0 0 20px;
-  border-color: transparent transparent transparent #d00000;
+  border-color: transparent transparent transparent #de2f32;
   border-style: solid;
   -webkit-transform: skew(0, 30deg);
           transform: skew(0, 30deg);
@@ -312,6 +319,190 @@ body {
   75% {
     right: -32%;
     bottom: -41%;
+  }
+}
+
+@-webkit-keyframes hat {
+  25% {
+    -webkit-transform: skew(0, 41deg);
+            transform: skew(0, 41deg);
+    right: -16%;
+  }
+  75% {
+    -webkit-transform: skew(0, 26deg);
+            transform: skew(0, 26deg);
+    right: -17%;
+  }
+}
+
+@keyframes hat {
+  25% {
+    -webkit-transform: skew(0, 41deg);
+            transform: skew(0, 41deg);
+    right: -16%;
+  }
+  75% {
+    -webkit-transform: skew(0, 26deg);
+            transform: skew(0, 26deg);
+    right: -17%;
+  }
+}
+
+.star {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  z-index: 1;
+  background: #f8e7dc;
+  overflow: hidden;
+  -webkit-animation: glitter 4s infinite;
+          animation: glitter 4s infinite;
+}
+
+.star__top, .star__bottom {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.star__top::before, .star__top::after, .star__bottom::before, .star__bottom::after {
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: #de2f32;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.star__top::before {
+  top: -50%;
+  left: -50%;
+}
+
+.star__top::after {
+  bottom: -50%;
+  left: 50%;
+}
+
+.star__bottom::before {
+  top: 50%;
+  left: -50%;
+}
+
+.star__bottom::after {
+  top: -50%;
+  left: 50%;
+}
+
+@-webkit-keyframes glitter {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glitter {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.year {
+  margin-top: 35px;
+  font-weight: 700;
+  font-size: 150px;
+  text-align: center;
+  height: 120px;
+  line-height: 110px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url("../images/wave.png");
+  color: transparent;
+  text-shadow: 0 0 rgba(255, 255, 255, 0.1);
+  -webkit-animation: wave-animation 1s infinite, loading-animation 10s infinite alternate;
+          animation: wave-animation 1s infinite, loading-animation 10s infinite alternate;
+  background-size: 200px 100px;
+  background-repeat: repeat-x;
+}
+
+@-webkit-keyframes wave-animation {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: 200px bottom;
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: 200px bottom;
+  }
+}
+
+@-webkit-keyframes loading-animation {
+  0% {
+    background-size: 200px 0px;
+  }
+  100% {
+    background-size: 200px 200px;
+  }
+}
+
+@keyframes loading-animation {
+  0% {
+    background-size: 200px 0px;
+  }
+  100% {
+    background-size: 200px 200px;
   }
 }
 /*# sourceMappingURL=styles.min.css.map */
